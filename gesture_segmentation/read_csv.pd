@@ -1,0 +1,42 @@
+#N canvas 0 22 467 298 12;
+#X declare -stdpath extra/list-abs -stdpath extra/moocow -stdpath extra/zexy
+;
+#X declare -stdpath extra/mrpeach;
+#X obj 175 48 inlet filename;
+#X obj 15 48 inlet tgl;
+#X obj 15 78 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 297 128 metro 100;
+#X msg 15 168 rewind;
+#X obj 15 98 t a a;
+#X obj 15 128 select 0;
+#X obj 95 48 inlet loop;
+#X obj 56 258 spigot;
+#X obj 357 48 inlet T;
+#X obj 175 129 t b a;
+#X msg 175 78 read \$1;
+#X obj 207 209 csv_file;
+#X text 17 9 Read a comma-separated-values file (.csv) where each line
+has 1 to 3 values.;
+#X obj 133 259 outlet x y z;
+#X obj 283 259 outlet done;
+#X msg 169 159 info;
+#X connect 0 0 11 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 12 0;
+#X connect 4 0 12 0;
+#X connect 5 0 6 0;
+#X connect 5 1 3 0;
+#X connect 6 0 4 0;
+#X connect 7 0 8 1;
+#X connect 8 0 4 0;
+#X connect 9 0 3 1;
+#X connect 10 0 4 0;
+#X connect 10 0 16 0;
+#X connect 10 1 12 0;
+#X connect 11 0 10 0;
+#X connect 12 0 14 0;
+#X connect 12 2 8 0;
+#X connect 12 2 15 0;
+#X connect 16 0 12 0;

@@ -1,0 +1,15 @@
+#N canvas 1079 203 381 249 16;
+#X declare -lib iemmatrix;
+#X text -262 57 Juan Ignacio Mendoza Garay - 2018;
+#X obj -93 -133 import iemmatrix;
+#X obj -273 -93 mtx_.*;
+#X obj -273 -53 mtx_sum;
+#X obj -273 -13 mtx_sum;
+#X obj -273 27 outlet;
+#X obj -273 -133 inlet;
+#X obj -213 -133 inlet;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 6 0 2 0;
+#X connect 7 0 2 1;

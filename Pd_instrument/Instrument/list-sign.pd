@@ -1,0 +1,12 @@
+#N canvas 843 118 346 367 16;
+#X obj 75 139 list-absolute;
+#X obj 117 199 list-emath /;
+#X obj 127 57 inlet;
+#X obj 117 239 outlet;
+#X obj 127 97 trigger a a;
+#X text 12 315 Juan Ignacio Mendoza G. - 2022;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 2 0 4 0;
+#X connect 4 0 0 0;
+#X connect 4 1 1 1;

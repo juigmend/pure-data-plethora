@@ -1,0 +1,6 @@
+NOTES ON CSV SEGMENTATION FILES
+
+QAC / QAV = acceleration / velocity recorded with Qualisys optical mocap
+
+NRT = non-real time annotation
+

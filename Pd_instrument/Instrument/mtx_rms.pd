@@ -1,0 +1,15 @@
+#N canvas 0 0 374 215 16;
+#X declare -lib iemmatrix;
+#X declare -lib hexloader;
+#X obj 11 50 mtx_.^ 2;
+#X obj 11 80 mtx_mean;
+#X obj 11 110 sqrt;
+#X obj 11 140 outlet;
+#X obj 181 80 import iemmatrix;
+#X obj 181 110 import hexloader;
+#X text 9 171 Juan Ignacio Mendoza Garay - 2018;
+#X obj 11 20 inlet column vector;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 7 0 0 0;

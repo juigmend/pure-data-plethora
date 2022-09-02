@@ -1,0 +1,104 @@
+#N canvas 225 52 808 669 12;
+#X declare -lib mrpeach;
+#X obj -264 500 outlet x;
+#X obj -184 500 outlet y;
+#X obj -102 500 outlet z;
+#X obj 175 500 outlet irx;
+#X obj 270 500 outlet iry;
+#X obj -259 30 inlet toggle;
+#X obj -88 260 unpackOSC;
+#X obj 352 260 import mrpeach;
+#X obj -88 290 routeOSC /wii;
+#X obj -264 430 unpack f f f;
+#X obj 175 430 unpack f f;
+#X obj -16 430 unpack f f;
+#X obj -259 80 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 358 570 middle;
+#X text 358 500 RANGE:;
+#X text -172 590 0;
+#X text -15 550 right 100;
+#X text -15 590 left -83;
+#X text 75 0 -- GETTING DATA FROM THE WIIMOTE VIA OPEN SOUND CONTROL
+--;
+#X text 82 130 <-- This thing receives data through a network port.
+The number of the port has four digits and has to be set to match the
+sending entity. In this case the sending entity is an external software
+that receives wiimote data from the bluetooth antenna of the computer
+and converts it to OSC data.;
+#X text -15 570 horiz. 8;
+#X text 79 570 horiz. 0;
+#X text 79 550 down 90;
+#X text 79 590 up -90;
+#X text 256 550 1;
+#X text 249 570 0.5;
+#X text 256 590 0;
+#X text 192 550 right;
+#X text 289 550 up;
+#X text 192 590 left;
+#X text 191 570 center;
+#X text 289 570 center;
+#X text 289 590 down;
+#X text 358 550 upper lim.;
+#X text 358 590 lower lim.;
+#X floatatom -6 470 5 0 0 0 - - -;
+#X floatatom 90 470 5 0 0 0 - - -;
+#X floatatom 185 470 5 0 0 0 - - -;
+#X floatatom 280 470 5 0 0 0 - - -;
+#X floatatom -254 470 5 0 0 0 - - -;
+#X floatatom -92 470 5 0 0 0 - - -;
+#X floatatom -174 470 5 0 0 0 - - -;
+#X text -239 524 x;
+#X text -166 524 y;
+#X text -77 524 z;
+#X text -5 524 pitch;
+#X text 95 524 roll;
+#X text 197 524 x/yaw;
+#X text 282 524 y/pitch;
+#X obj -88 330 routeOSC /acc /orientation /irdata /button;
+#X obj 430 500 outlet butt;
+#X text 76 30 The method here requires an external software that captures
+the data from the wiimote \, converts it to an OSC stream and then
+send it through a network port. For Macintosh I recommend Darwiinremote
+OSC \, which is free. Also Osculator is good and not very expensive.
+;
+#X obj -88 200 udp_receive;
+#X msg -149 31 0;
+#X obj -14 30 inlet port;
+#X text 81 238 This thing imports the library mrpeach that contains
+the objects udpreceive and unpackOSC -->;
+#X msg -149 61 5600;
+#X msg -14 111 set \$1;
+#X obj -149 0 loadbang;
+#X msg -14 160 5600;
+#X obj -149 111 select 0 1;
+#X text -172 570 265;
+#X text -172 550 ?;
+#X text 36 634 Juan Ignacio Mendoza - 2018;
+#X obj -16 500 outlet p;
+#X obj 80 500 outlet r;
+#X connect 5 0 12 0;
+#X connect 6 0 8 0;
+#X connect 8 0 49 0;
+#X connect 9 0 0 0;
+#X connect 9 1 1 0;
+#X connect 9 2 2 0;
+#X connect 10 0 3 0;
+#X connect 10 1 4 0;
+#X connect 11 0 64 0;
+#X connect 11 1 65 0;
+#X connect 12 0 60 0;
+#X connect 49 0 9 0;
+#X connect 49 1 11 0;
+#X connect 49 2 10 0;
+#X connect 49 3 50 0;
+#X connect 52 0 6 0;
+#X connect 53 0 12 0;
+#X connect 53 0 56 0;
+#X connect 54 0 57 0;
+#X connect 56 0 57 0;
+#X connect 57 0 59 0;
+#X connect 58 0 53 0;
+#X connect 59 0 52 1;
+#X connect 60 0 52 0;
+#X connect 60 1 59 0;

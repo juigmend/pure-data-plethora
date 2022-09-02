@@ -1,0 +1,55 @@
+#N canvas 704 31 686 827 12;
+#X declare -lib zexy;
+#X declare -lib motex;
+#X obj 24 102 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 24 122 openpanel;
+#X msg 182 102 play document 1;
+#X msg 24 212 open file "\$1";
+#X msg 182 162 stop document 1;
+#X msg 182 132 pause document 1;
+#X msg 182 192 present document 1;
+#X obj 7 4 declare -lib zexy;
+#X obj 7 34 declare -lib motex;
+#X obj 24 152 s2l /;
+#X obj 24 182 l2s :;
+#X msg 182 222 set scale of document 1 to normal;
+#X msg 182 252 set scale of document 1 to half;
+#X msg 182 282 present document 1 scale screen display 2;
+#X msg 182 312 get current time of document 1;
+#X msg 182 342 get duration of document 1;
+#X msg 7 62 osascript -e 'tell application "QuickTime Player" to activate'
+&;
+#X msg 24 522 osascript -e 'tell application "QuickTime Player" to
+\$1' &;
+#X obj 7 612 system;
+#X obj 7 552 s \$0-messages;
+#X obj 7 582 r \$0-messages;
+#X obj 94 492 s \$0-messages;
+#X obj 7 642 netreceive 4000 1;
+#X obj 94 412 l2s;
+#X obj 24 412 l2s;
+#X msg 94 442 osascript -e 'tell application "QuickTime Player" to
+\$1' > /dev/udp/localhost/4000;
+#X obj 7 672 print MESSAGE FROM QT;
+#X connect 0 0 1 0;
+#X connect 1 0 9 0;
+#X connect 2 0 24 0;
+#X connect 3 0 24 0;
+#X connect 4 0 24 0;
+#X connect 5 0 24 0;
+#X connect 6 0 24 0;
+#X connect 9 0 10 0;
+#X connect 10 0 3 0;
+#X connect 11 0 24 0;
+#X connect 12 0 24 0;
+#X connect 13 0 24 0;
+#X connect 14 0 23 0;
+#X connect 15 0 23 0;
+#X connect 16 0 19 0;
+#X connect 17 0 19 0;
+#X connect 20 0 18 0;
+#X connect 22 0 26 0;
+#X connect 23 0 25 0;
+#X connect 24 0 17 0;
+#X connect 25 0 21 0;

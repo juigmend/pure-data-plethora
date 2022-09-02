@@ -1,0 +1,21 @@
+#N canvas 0 22 555 356 10;
+#X obj 29 54 inlet original signal;
+#X obj 29 294 outlet rescaled signal;
+#X obj 88 84 inlet original minimum;
+#X obj 147 114 inlet original maximum;
+#X obj 296 144 inlet desired minimum;
+#X obj 366 174 inlet desired maximum;
+#X obj 29 223 expr ($f1-$f2)*($f5-$f4)/($f3-$f2) + $f4;
+#X floatatom 39 253 5 0 0 0 - - -;
+#X obj 366 264 outlet desired maximum;
+#X obj 296 294 outlet desired minimum;
+#X text 23 15 With this abstraction you can rescale a control signal.
+;
+#X connect 0 0 6 0;
+#X connect 2 0 6 1;
+#X connect 3 0 6 2;
+#X connect 4 0 6 3;
+#X connect 4 0 9 0;
+#X connect 5 0 6 4;
+#X connect 5 0 8 0;
+#X connect 6 0 1 0;

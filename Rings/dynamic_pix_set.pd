@@ -1,0 +1,36 @@
+#N canvas 1073 551 665 502 16;
+#N canvas 113 431 416 155 \$0-pix_set 0;
+#X obj 0 60 pix_set 40 40;
+#X obj 0 100 s 1032-pix_set_out;
+#X obj 0 0 r 1032-pix_set_in1;
+#X obj 200 0 r 1032-pix_set_in2;
+#X connect 0 0 1 0;
+#X connect 2 0 0 0;
+#X connect 3 0 0 1;
+#X restore 24 337 pd \$0-pix_set;
+#X obj 214 33 inlet size;
+#X obj 24 297 s pd-\$0-pix_set;
+#X obj 24 33 inlet pix_set_in1;
+#X obj 24 417 outlet pix_set_out;
+#X obj 24 387 r \$0-pix_set_out;
+#X obj 24 113 s \$0-pix_set_in1;
+#X obj 214 153 pack f f \$0;
+#X msg 44 223 clear \, obj 0 60 pix_set \$1 \$2 \, obj 0 100 s \$3-pix_set_out
+\, obj 0 0 r \$3-pix_set_in1 \, obj 200 0 r \$3-pix_set_in2 \, connect
+0 0 1 0 \, connect 2 0 0 0 \, connect 3 0 0 1;
+#X obj 214 113 unpack f f;
+#X obj 24 153 loadbang;
+#X msg 24 183 clear;
+#X text 24 457 Juan Ignacio Mendoza Garay - 2018;
+#X obj 374 113 s \$0-pix_set_in2;
+#X obj 374 33 inlet pix_set_in2;
+#X connect 1 0 9 0;
+#X connect 3 0 6 0;
+#X connect 5 0 4 0;
+#X connect 7 0 8 0;
+#X connect 8 0 2 0;
+#X connect 9 0 7 0;
+#X connect 9 1 7 1;
+#X connect 10 0 11 0;
+#X connect 11 0 2 0;
+#X connect 14 0 13 0;

@@ -1,0 +1,148 @@
+#N canvas 139 104 366 161 10;
+#X declare -lib mrpeach;
+#X obj 12 39 import mrpeach;
+#N canvas 0 0 741 361 tcpsend_tcpreceive 0;
+#X msg 40 85 disconnect;
+#X obj 10 148 tgl 15 0 empty empty connected 20 7 0 8 -262144 -1 -1
+0 1;
+#X obj 10 125 tcpsend;
+#X msg 10 -105 connect localhost 1900;
+#X floatatom 573 12 3 0 0 0 - - -;
+#X floatatom 600 12 3 0 0 0 - - -;
+#X floatatom 627 12 3 0 0 0 - - -;
+#X floatatom 654 12 3 0 0 0 - - -;
+#X obj 530 53 print message;
+#X floatatom 617 -45 5 0 0 0 - - -;
+#X text 653 -47 connections;
+#X obj 573 -15 unpack 0 0 0 0 0;
+#X obj 530 -75 tcpreceive 1900;
+#X text 152 -104 <--- click this to connect;
+#X text 152 -88 localhost is a token word for the IP of the computer
+where this patch is running because the receiving part----------->
+;
+#X text 152 -65 is in this same computer.;
+#X text 370 11 IP of sender ------------------>;
+#X text 370 24 (reveals localhost IP;
+#X text 370 37 if sender and receiver;
+#X text 370 50 are the same);
+#X text 89 55 $ and a number indicates a variable;
+#X obj 34 -35 hsl 128 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 31 -5 i;
+#X msg 31 55 send \$1;
+#X floatatom 51 25 5 0 0 0 - - -;
+#X text 283 186 Juan Ignacio Mendoza - 2017;
+#X text 59 125 can only send integers between 0 and 255 :(;
+#X text 10 -145 ctrl-click or right-button-click over an object and
+select "help" to learn how the object works;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X connect 11 0 4 0;
+#X connect 11 1 5 0;
+#X connect 11 2 6 0;
+#X connect 11 3 7 0;
+#X connect 12 0 8 0;
+#X connect 12 1 11 0;
+#X connect 12 2 9 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 22 0 24 0;
+#X connect 23 0 2 0;
+#X restore 12 69 pd tcpsend_tcpreceive;
+#N canvas 79 73 811 454 netsend_netreceive 0;
+#X msg 40 185 disconnect;
+#X obj 10 268 tgl 15 0 empty empty connected 20 7 0 8 -262144 -1 -1
+1 1;
+#X floatatom 617 -45 5 0 0 0 - - -;
+#X text 653 -47 connections;
+#X text 152 -104 <--- click this to connect;
+#X text 152 -88 localhost is a token word for the IP of the computer
+where this patch is running because the receiving part----------->
+;
+#X text 152 -65 is in this same computer.;
+#X obj 10 245 netsend;
+#X msg 10 -105 connect localhost 1800;
+#X obj 530 -75 netreceive 1800;
+#X obj 40 -35 cursor;
+#X obj 40 35 route x y;
+#X floatatom 40 65 5 0 0 0 x - -;
+#X floatatom 85 65 5 0 0 1 y - -;
+#X obj 40 -5 route motion button;
+#X obj 40 -65 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 40 95 pack f f;
+#X text 59 245 can send floats \, integers \, symbols and lists :)
+;
+#X obj 623 265 dac~;
+#X obj 464 135 osc~;
+#X obj 728 -149 loadbang;
+#X msg 728 -119 \; pd dsp 1;
+#X obj 623 235 *~;
+#X obj 699 67 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 699 206 5 0 0 0 - - -;
+#X obj 572 175 *~;
+#X text 644 -107 turn audio on;
+#X obj 530 15 unpack f f;
+#X msg 40 125 send cursor/ \$1 \$2;
+#X msg 265 125 send butt/ \$1;
+#X obj 265 35 route 1;
+#X text 285 283 Juan Ignacio Mendoza - 2017;
+#X obj 530 -15 route cursor/ butt/;
+#X obj 587 65 / 1024;
+#X obj 623 205 *~;
+#X msg 637 35 \$1 100;
+#X obj 637 135 line~;
+#X obj 464 66 expr (780 - $f1)*2;
+#X floatatom 474 96 5 0 0 0 - - -;
+#X floatatom 594 96 5 0 0 0 - - -;
+#X text 298 66 Adjust these numbers ---->;
+#X text 298 79 according to the dimensions;
+#X text 298 92 of your screen.;
+#X text 50 154 indicates a variable;
+#X text 50 141 $ and a number;
+#X text 10 -145 ctrl-click or right-button-click over an object and
+select "help" to learn how the object works;
+#X connect 0 0 7 0;
+#X connect 7 0 1 0;
+#X connect 8 0 7 0;
+#X connect 9 0 32 0;
+#X connect 9 1 2 0;
+#X connect 10 0 14 0;
+#X connect 11 0 12 0;
+#X connect 11 1 13 0;
+#X connect 12 0 16 0;
+#X connect 13 0 16 1;
+#X connect 14 0 11 0;
+#X connect 14 1 30 0;
+#X connect 15 0 10 0;
+#X connect 16 0 28 0;
+#X connect 19 0 25 0;
+#X connect 20 0 21 0;
+#X connect 22 0 18 0;
+#X connect 22 0 18 1;
+#X connect 23 0 22 1;
+#X connect 23 0 24 0;
+#X connect 25 0 34 0;
+#X connect 27 0 33 0;
+#X connect 27 1 37 0;
+#X connect 28 0 7 0;
+#X connect 29 0 7 0;
+#X connect 30 0 29 0;
+#X connect 32 0 27 0;
+#X connect 32 1 35 0;
+#X connect 33 0 25 1;
+#X connect 33 0 39 0;
+#X connect 34 0 22 0;
+#X connect 35 0 36 0;
+#X connect 36 0 34 1;
+#X connect 37 0 19 0;
+#X connect 37 0 38 0;
+#X restore 12 99 pd netsend_netreceive;
+#X text 105 40 <---------- this is an object;
+#X text 147 100 <--- this is another subpatch;
+#X text 147 70 <--- this is a subpatch;
+#X text 100 130 Juan Ignacio Mendoza - 2017;
+#X text 11 1 click \, ctrl-click or right-button-click over an object
+or subpatch;

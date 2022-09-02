@@ -1,0 +1,138 @@
+#N canvas 447 22 518 382 12;
+#X obj 72 229 *~;
+#X obj -5 -81 inlet~;
+#X obj 72 261 outlet~;
+#X obj 51 69 t b a;
+#X obj 11 109 *;
+#X obj 235 109 s \$0-q;
+#X obj 27 139 r \$0-q;
+#X text 62 -30 note;
+#X text 62 -18 velocity;
+#X text 345 49 env.time;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array \$0-env 100 float 1;
+#A 0 0 0.0954906 0.34549 0.654507 0.904507 1 0.999727 0.998907 0.997541
+0.995632 0.99318 0.990189 0.986663 0.982604 0.978017 0.972908 0.967281
+0.961144 0.954502 0.947364 0.939736 0.931627 0.923046 0.914003 0.904507
+0.894569 0.884199 0.873409 0.862211 0.850617 0.838639 0.826291 0.813587
+0.800539 0.787163 0.773472 0.759483 0.74521 0.730669 0.715876 0.700846
+0.685597 0.670145 0.654507 0.6387 0.622741 0.606648 0.590438 0.57413
+0.55774 0.541288 0.52479 0.508265 0.491731 0.475206 0.458708 0.442256
+0.425866 0.409558 0.393348 0.377256 0.361297 0.34549 0.329852 0.3144
+0.299151 0.284121 0.269328 0.254787 0.240514 0.226525 0.212834 0.199458
+0.186411 0.173706 0.161358 0.14938 0.137786 0.126588 0.115798 0.105429
+0.0954906 0.0859947 0.0769515 0.068371 0.0602624 0.0526347 0.0454961
+0.0388546 0.0327172 0.0270909 0.0219817 0.0173952 0.0133364 0.00980976
+0.00681913 0.0043678 0.00245839 0.00109309 0.000273317;
+#X coords 0 1 99 0 123 60 1;
+#X restore 233 159 graph;
+#X obj 289 49 s \$0-et;
+#X text 284 109 q (resonance);
+#X text 360 79 transposing factor;
+#X obj 51 39 r \$0-transfac;
+#X obj 262 79 s \$0-transfac;
+#X obj 155 -81 inlet ec;
+#X obj 155 -51 s \$0-env;
+#X text 159 -15 curve;
+#X text 159 -27 envelope;
+#X obj 54 -81 inlet f v;
+#X obj 54 -51 unpack f f;
+#N canvas 999 320 523 567 envelope 1;
+#X obj -30 449 vline~;
+#X obj -30 269 f;
+#X obj -100 539 outlet~ envelope;
+#X obj -30 480 tabread~ \$0-env;
+#X obj -30 209 bang;
+#X obj -272 12 r \$0-ht;
+#X obj -180 42 moses 1;
+#X msg -180 72 0;
+#X msg -134 71 1;
+#X obj -180 102 change;
+#X obj -219 179 select 0;
+#X obj -83 179 select 0;
+#X obj 87 269 r \$0-ec;
+#X obj 69 299 *;
+#X obj 99 132 r \$0-et;
+#X obj 29 339 s \$0-at;
+#X obj 99 377 s \$0-rt;
+#X msg -30 389 0 \, 100 \$1;
+#X obj 99 339 expr $f2-$f1;
+#X obj -201 239 r \$0-rt;
+#X obj -272 42 select 0;
+#X obj -180 12 r \$0-v;
+#X msg -219 71 1;
+#X msg -272 72 2;
+#X obj -176 449 vline~;
+#X msg -219 389 0 \$1;
+#X obj -219 269 f;
+#X obj -121 239 r \$0-at;
+#X obj -139 269 f;
+#X obj -139 209 bang;
+#X msg -139 389 1 \$1;
+#X obj -219 132 gate_2;
+#X connect 0 0 3 0;
+#X connect 1 0 17 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 5 0 20 0;
+#X connect 6 0 7 0;
+#X connect 6 1 8 0;
+#X connect 7 0 9 0;
+#X connect 8 0 9 0;
+#X connect 9 0 31 1;
+#X connect 10 0 26 0;
+#X connect 10 1 29 0;
+#X connect 11 1 4 0;
+#X connect 12 0 13 1;
+#X connect 13 0 15 0;
+#X connect 13 0 18 0;
+#X connect 14 0 1 1;
+#X connect 14 0 18 1;
+#X connect 14 0 13 0;
+#X connect 17 0 0 0;
+#X connect 18 0 16 0;
+#X connect 19 0 26 1;
+#X connect 20 0 23 0;
+#X connect 20 1 22 0;
+#X connect 21 0 6 0;
+#X connect 22 0 31 0;
+#X connect 23 0 31 0;
+#X connect 24 0 2 0;
+#X connect 25 0 24 0;
+#X connect 26 0 25 0;
+#X connect 27 0 28 1;
+#X connect 28 0 30 0;
+#X connect 29 0 28 0;
+#X connect 30 0 24 0;
+#X connect 31 0 10 0;
+#X connect 31 1 11 0;
+#X restore 90 139 pd envelope;
+#X obj 235 -81 inlet q tf et ec ht;
+#X obj 235 -51 unpack f f f f f;
+#X text 371 19 env.center;
+#X obj 316 19 s \$0-ec;
+#X obj 344 -11 s \$0-ht;
+#X text 399 -11 hold toggle;
+#X obj 121 10 s \$0-v;
+#X obj -5 189 bp~ 1;
+#X text 242 242 Tested in Puredata Extended 0.42.5;
+#X text 249 261 Juan Ignacio Mendoza Garay - 2018;
+#X connect 0 0 2 0;
+#X connect 1 0 30 0;
+#X connect 3 0 4 0;
+#X connect 3 1 4 1;
+#X connect 4 0 30 1;
+#X connect 6 0 30 2;
+#X connect 14 0 3 0;
+#X connect 16 0 17 0;
+#X connect 20 0 21 0;
+#X connect 21 0 4 0;
+#X connect 21 1 29 0;
+#X connect 22 0 0 1;
+#X connect 23 0 24 0;
+#X connect 24 0 5 0;
+#X connect 24 1 15 0;
+#X connect 24 2 11 0;
+#X connect 24 3 26 0;
+#X connect 24 4 27 0;
+#X connect 30 0 0 0;

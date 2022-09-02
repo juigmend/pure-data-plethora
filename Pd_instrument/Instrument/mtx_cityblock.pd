@@ -1,0 +1,17 @@
+#N canvas 0 22 249 294 12;
+#X text 6 248 Juan Ignacio Mendoza Garay - 2019;
+#X text 55 6 cityblock distance;
+#X obj 147 34 inlet;
+#X obj 47 84 spigot;
+#X obj 47 214 outlet;
+#X obj 47 34 r \$0_sw_xyz;
+#X obj 47 144 t a a;
+#X obj 47 174 mtx_distance2;
+#X obj 47 114 mtx_.^ 0.5;
+#X connect 2 0 3 1;
+#X connect 3 0 8 0;
+#X connect 5 0 3 0;
+#X connect 6 0 7 0;
+#X connect 6 1 7 1;
+#X connect 7 0 4 0;
+#X connect 8 0 6 0;

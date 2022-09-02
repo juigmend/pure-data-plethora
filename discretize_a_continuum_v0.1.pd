@@ -1,0 +1,167 @@
+#N canvas 534 24 386 640 10;
+#X text 24 601 Juan Ignacio Mendoza - 2017;
+#X text -64 -19 click \, ctrl-click or right-button-click over an object
+or subpatch;
+#X obj -55 115 cursor;
+#X obj -55 185 route x y;
+#X floatatom -55 215 5 0 0 0 x - -;
+#X floatatom -10 215 5 0 0 1 y - -;
+#X obj -55 135 route motion button;
+#X obj -55 75 tgl 15 0 empty empty empty 17 7 0 10 -261234 -1 -1 1
+1;
+#X obj 142 575 dac~;
+#X obj -10 435 osc~;
+#X obj 220 5 loadbang;
+#X obj 142 545 *~;
+#X obj 220 407 vsl 15 122 0 1 0 0 empty empty empty 0 -9 0 10 -204786
+-1 -1 8470 1;
+#X floatatom 220 545 5 0 0 0 - - -;
+#X obj 81 482 *~;
+#X obj 156 185 route 1;
+#X obj 96 315 / 1024;
+#X obj 142 515 *~;
+#X msg 156 315 \$1 100;
+#X obj 156 375 line~;
+#X obj -10 245 expr (780 - $f1)*2;
+#X floatatom 0 346 5 0 0 0 - - -;
+#X floatatom 103 346 5 0 0 0 - - -;
+#X obj -55 244 s \$0-x;
+#X obj 96 284 r \$0-x;
+#N canvas 370 0 489 607 discretiser 0;
+#X obj 4 18 inlet;
+#X obj 74 529 outlet;
+#X text 5 -12 Discretise it \, don't criticise it.;
+#X obj 111 18 inlet;
+#X obj 74 128 gate 2;
+#X floatatom 4 79 5 0 0 0 - - -;
+#X obj 111 48 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 111 78 + 1;
+#X text 3 128 continuous;
+#X text 122 128 discrete;
+#X floatatom 151 69 5 0 0 0 - - -;
+#X floatatom 151 99 5 0 0 0 - - -;
+#X floatatom 151 149 5 0 0 0 - - -;
+#X floatatom 151 189 5 0 0 0 - - -;
+#X obj 107 208 int;
+#X floatatom 151 229 5 0 0 0 - - -;
+#X obj 107 168 / 100;
+#X obj 151 488 expr $f1 * pow(12 \, 0.5) * 100;
+#X text 336 488 pentatonic mixolydian;
+#X floatatom 140 529 10 0 0 0 - - -;
+#X obj 151 428 expr $f1;
+#X text 208 428 your musical math (give it a go);
+#X obj 151 458 expr $f1 * 666 * 666;
+#X text 285 458 Lucifer's mushrooms;
+#X obj 101 262 cnv 15 236 149 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 107 388 expr 440 * pow(2 \, $f1);
+#X obj 107 368 / 12;
+#X obj 117 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 132 318 bng 15 250 50 0 empty empty empty 17 7 0 10 -33289 -262144
+-1;
+#X obj 148 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 164 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 117 288 select 0 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 180 318 bng 15 250 50 0 empty empty empty 17 7 0 10 -33289 -262144
+-1;
+#X obj 196 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 212 318 bng 15 250 50 0 empty empty empty 17 7 0 10 -33289 -262144
+-1;
+#X obj 228 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 244 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 260 318 bng 15 250 50 0 empty empty empty 17 7 0 10 -33289 -262144
+-1;
+#X obj 276 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 292 318 bng 15 250 50 0 empty empty empty 17 7 0 10 -33289 -262144
+-1;
+#X obj 308 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 129 268 equal temperament 12 semitones;
+#X text 166 559 Juan Ignacio Mendoza - 2017;
+#X connect 0 0 4 1;
+#X connect 0 0 5 0;
+#X connect 3 0 6 0;
+#X connect 4 0 1 0;
+#X connect 4 1 12 0;
+#X connect 4 1 16 0;
+#X connect 6 0 7 0;
+#X connect 6 0 10 0;
+#X connect 7 0 4 0;
+#X connect 7 0 11 0;
+#X connect 14 0 15 0;
+#X connect 14 0 31 0;
+#X connect 14 0 26 0;
+#X connect 16 0 13 0;
+#X connect 16 0 14 0;
+#X connect 25 0 19 0;
+#X connect 25 0 1 0;
+#X connect 26 0 25 0;
+#X connect 31 0 27 0;
+#X connect 31 1 28 0;
+#X connect 31 2 29 0;
+#X connect 31 3 30 0;
+#X connect 31 4 32 0;
+#X connect 31 5 33 0;
+#X connect 31 6 34 0;
+#X connect 31 7 35 0;
+#X connect 31 8 36 0;
+#X connect 31 9 37 0;
+#X connect 31 10 38 0;
+#X connect 31 11 39 0;
+#X connect 31 12 40 0;
+#X restore -10 315 pd discretiser;
+#X obj 71 271 vradio 15 1 1 2 empty empty empty 0 -8 0 10 -262130 -1
+-1 0;
+#X text 6 270 continuous;
+#X text 17 283 discrete;
+#X obj -10 405 line~;
+#X obj 220 375 line;
+#X obj 220 185 bang;
+#X msg -55 45 1;
+#X msg 220 315 0 \, 0.7 10000;
+#X obj 85 135 s pd;
+#X msg 85 115 dsp \$1;
+#X msg -10 375 \$1 30;
+#X connect 2 0 6 0;
+#X connect 3 0 4 0;
+#X connect 3 1 5 0;
+#X connect 4 0 23 0;
+#X connect 5 0 20 0;
+#X connect 6 0 3 0;
+#X connect 6 1 15 0;
+#X connect 7 0 2 0;
+#X connect 7 0 35 0;
+#X connect 9 0 14 0;
+#X connect 10 0 32 0;
+#X connect 10 0 31 0;
+#X connect 11 0 8 0;
+#X connect 11 0 8 1;
+#X connect 12 0 11 1;
+#X connect 12 0 13 0;
+#X connect 14 0 17 0;
+#X connect 15 0 18 0;
+#X connect 16 0 14 1;
+#X connect 16 0 22 0;
+#X connect 17 0 11 0;
+#X connect 18 0 19 0;
+#X connect 19 0 17 1;
+#X connect 20 0 25 0;
+#X connect 24 0 16 0;
+#X connect 25 0 36 0;
+#X connect 25 0 21 0;
+#X connect 26 0 25 1;
+#X connect 29 0 9 0;
+#X connect 30 0 12 0;
+#X connect 31 0 33 0;
+#X connect 32 0 7 0;
+#X connect 33 0 30 0;
+#X connect 35 0 34 0;
+#X connect 36 0 29 0;

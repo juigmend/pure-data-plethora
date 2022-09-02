@@ -1,0 +1,122 @@
+#N canvas 589 68 660 232 12;
+#X obj -82 48 cnv 15 646 134 empty empty empty 20 12 0 14 -99865 -66577
+0;
+#X obj -79 51 cnv 15 640 128 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 232 105 hsl 64 19 0 2400 0 0 \$0-osc_freq noreceive osc_freq
+0 30 0 14 -262130 -1 -1 0 1;
+#X obj 417 91 knob 32 32 0 1 0 0 \$0-main_level \$0-main_level_rknob
+main_level -22 44 0 14 -262144 -1 -1 1550 1;
+#X obj 69 91 knob 32 32 0 1 0 0 \$0-noise_level noreceive noise_level
+-22 44 0 14 -262144 -1 -1 0 1;
+#X obj 163 91 knob 32 32 0 1 0 0 \$0-osc_level noreceive osc_level
+-20 44 0 14 -262144 -1 -1 0 1;
+#X obj 502 90 bng 34 250 50 0 \$0-trigger empty trigger -9 44 0 14
+-260097 -258113 -1;
+#N canvas 153 197 718 507 impulsion_engine 0;
+#X obj 144 177 noise~;
+#X obj 144 409 *~;
+#X obj 264 409 *~;
+#X obj 144 359 *~;
+#X obj 14 177 osc~;
+#X obj 144 287 *~;
+#X floatatom 282 87 5 0 0 0 - - -;
+#X msg 282 117 set \$1;
+#X msg 282 147 834;
+#X obj 282 207 vline~;
+#X obj 144 443 throw~ main_L;
+#X obj 264 443 throw~ main_R;
+#X obj 182 359 expr (1-$f1);
+#X obj 282 237 tabread~ \$0-transient;
+#X msg 282 177 0 \, 100 \$1;
+#X obj 372 207 tabwrite \$0-transient;
+#X msg 372 177 0 0 \, 0 100;
+#X obj 340 117 t b b;
+#X obj 144 247 *~;
+#X obj 14 237 *~;
+#X obj 162 319 r \$0-main_level;
+#X obj 162 207 r \$0-noise_level;
+#X obj 32 207 r \$0-osc_level;
+#X obj 14 67 r \$0-osc_freq;
+#X obj 282 319 r \$0-main_pan;
+#X obj 340 87 r \$0-trigger;
+#X text 273 473 Juan Ignacio Mendoza - 2016;
+#X msg 34 127 \; freq_display label \$1;
+#X obj 34 97 ftos;
+#X obj 392 409 s \$0-main_level_rknob;
+#X obj 392 319 r \$0-set_main_level;
+#X obj 392 379 line;
+#X obj 562 379 line;
+#X obj 562 409 s \$0-main_pan_rknob;
+#X obj 562 319 r \$0-set_main_pan;
+#X msg 392 349 0.5 100;
+#X msg 562 349 0.5 100;
+#X connect 0 0 18 0;
+#X connect 1 0 10 0;
+#X connect 2 0 11 0;
+#X connect 3 0 1 0;
+#X connect 3 0 2 0;
+#X connect 4 0 19 0;
+#X connect 5 0 3 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 14 0;
+#X connect 9 0 13 0;
+#X connect 12 0 1 1;
+#X connect 13 0 5 1;
+#X connect 14 0 9 0;
+#X connect 16 0 15 0;
+#X connect 17 0 8 0;
+#X connect 17 1 16 0;
+#X connect 18 0 5 0;
+#X connect 19 0 5 0;
+#X connect 20 0 3 1;
+#X connect 21 0 18 1;
+#X connect 22 0 19 1;
+#X connect 23 0 4 0;
+#X connect 23 0 28 0;
+#X connect 24 0 12 0;
+#X connect 24 0 2 1;
+#X connect 25 0 17 0;
+#X connect 28 0 27 0;
+#X connect 30 0 35 0;
+#X connect 31 0 29 0;
+#X connect 32 0 33 0;
+#X connect 34 0 36 0;
+#X connect 35 0 31 0;
+#X connect 36 0 32 0;
+#X restore 130 15 pd impulsion_engine;
+#X text 103 156 Juan Ignacio Mendoza - 2016;
+#X obj 230 59 cnv 15 68 36 empty empty empty 6 14 0 20 -162280 -4034
+0;
+#X obj 234 63 cnv 15 60 28 empty freq_display 114 6 14 0 20 -66577
+-4034 0;
+#X obj -65 69 cnv 15 100 80 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array \$0-transient 100 float 3;
+#A 0 0 0.84751 0.860011 0.885011 0.897512 0.947513 0.972513 0.972513
+0.985014 0.985014 0.985014 0.985014 0.985014 0.985014 0.980847 0.97668
+0.972513 0.966263 0.960013 0.947513 0.941263 0.935012 0.922512 0.910012
+0.897512 0.885011 0.872511 0.84751 0.82251 0.81001 0.797509 0.785009
+0.776675 0.768342 0.760008 0.722508 0.710007 0.697507 0.685007 0.672506
+0.660006 0.647506 0.635006 0.622505 0.597505 0.572504 0.547504 0.535003
+0.522503 0.497502 0.485002 0.472502 0.460002 0.447501 0.435001 0.422501
+0.41 0.3975 0.37875 0.359999 0.352499 0.344999 0.337499 0.329999 0.322498
+0.284998 0.278747 0.272497 0.259997 0.247497 0.234996 0.222496 0.216246
+0.209996 0.197496 0.184995 0.184995 0.184995 0.159995 0.147494 0.134994
+0.109994 0.103743 0.0974933 0.084993 0.0724927 0.0674926 0.0624925
+0.0574924 0.0524923 0.0474922 0.0433254 0.0391586 0.0349919 0.0308251
+0.0266583 0.0224916 0.0183248 0.0141581 0;
+#X coords 0 1 100 0 100 80 1 0 0;
+#X restore -66 69 graph;
+#X obj -64 151 cnv 15 100 16 empty empty envelope 18 8 0 14 -233017
+-33289 0;
+#X obj 337 91 knob 32 32 0 1 0 1 \$0-main_pan \$0-main_pan_rknob main_pan
+-22 44 0 14 -262144 -1 -1 1550 1;
+#X obj -66 55 cnv 15 100 12 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 427 150 bng 14 250 50 0 \$0-set_main_level noreceive empty 17
+7 0 10 -257985 -1 -1;
+#X obj 346 150 bng 14 250 50 0 \$0-set_main_pan noreceive empty 17
+7 0 10 -257985 -1 -1;

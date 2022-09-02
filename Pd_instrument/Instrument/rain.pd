@@ -1,0 +1,25 @@
+#N canvas 1031 453 321 279 12;
+#X obj 86 93 hip~ 2000;
+#X obj 86 123 outlet~;
+#X obj 131 -52 inlet;
+#X text 127 174 Based on Andy Farnell's;
+#X text 177 189 spikerain synth;
+#X obj 1 3 cnv 10 109 48 empty empty empty 50 12 0 10 -204800 -143491
+0;
+#X obj 4 8 cnv 10 103 40 empty empty empty 50 12 0 10 -228856 -143491
+0;
+#X obj 10 29 hsl 90 15 0 1 0 0 \$0-L_slider_snd \$0-L_slider_rcv empty
+29 8 0 10 -204800 -33289 -262144 2000 1;
+#X obj 37 11 cnv 10 60 10 empty empty rain 8 8 1 14 -228856 -99865
+0;
+#X obj 131 -22 s \$0-L_slider_rcv;
+#X obj 131 8 r \$0-L_slider_snd;
+#X text 1 154 Juan Mendoza & Tasos Mavrolampados - 2018;
+#X obj 86 69 drops 20 0.02 0.16 1;
+#X obj 131 39 expr (1-$f1)/100 + 0.008;
+#X connect 0 0 1 0;
+#X connect 2 0 9 0;
+#X connect 10 0 13 0;
+#X connect 12 0 0 0;
+#X connect 13 0 12 1;
+#X coords 0 -1 1 1 111 54 2 0 0;

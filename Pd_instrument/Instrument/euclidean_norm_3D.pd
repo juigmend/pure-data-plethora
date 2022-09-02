@@ -1,0 +1,17 @@
+#N canvas 133 22 582 241 16;
+#X obj -89 37 inlet x;
+#X obj 92 37 inlet y;
+#X obj -89 77 expr pow($f1 \, 2);
+#X obj 92 77 expr pow($f1 \, 2);
+#X obj -16 185 outlet;
+#X obj -16 146 expr sqrt($f1+$f2+$f3);
+#X obj 279 77 expr pow($f1 \, 2);
+#X obj 279 37 inlet z;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 1;
+#X connect 5 0 4 0;
+#X connect 6 0 5 2;
+#X connect 7 0 6 0;
+#X coords 0 0 1 1 48 46 0;

@@ -1,0 +1,38 @@
+Tested with:
+     - Puredata Extended 0.42.5
+     - Macintosh OS 10.11.6
+     - Macintosh OS 10.10.5
+     - Myo Connect 1.0.1
+
+
+————————————————————————————————————————————————————————————————
+1)
+Install the Myo Connect software. Download it from myo.com.
+
+————————————————————————————————————————————————————————————————
+2)
+For this step the Myo Connect software needs to be inactive. 
+If it is open, then quit it.
+Copy the myo.framework file into ~/Library/Frameworks. If the Frameworks folder doesn’t exist then you need to create it. 
+
+————————————————————————————————————————————————————————————————
+3)
+Connect the Myo armbands and make sure they are working.
+They should ask you to sync them. If not, then something is wrong.
+
+————————————————————————————————————————————————————————————————
+4)
+Install Puredata Extended 0.42.5. Download it from puredata.info/downloads
+
+————————————————————————————————————————————————————————————————
+5)
+Execute the DaemonMYO script, just by double clicking on it.
+
+————————————————————————————————————————————————————————————————
+6)
+Put Myo_OSC_2.pd and Myo_process_display in the same folder or directory.
+This also should be the same folder or directory than your “master” patch.
+The “master” patch is the one where you are making your project.
+
+————————————————————————————————————————————————————————————————
+7) Run Myo_OSC_2.pd abstraction just by double clicking on it. You can also incorporate it as an object in your “master” patch. Do this with command-1 and type “Myo_OSC_2” without the quotes. 

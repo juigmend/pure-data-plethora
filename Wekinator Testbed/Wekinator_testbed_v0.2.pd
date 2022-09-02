@@ -1,0 +1,107 @@
+#N canvas 372 158 1009 749 12;
+#X declare -lib mrpeach;
+#X text 493 709 Juan Ignacio Mendoza - 2017;
+#X obj 45 138 cnv 15 540 420 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 51 168 cnv 15 526 382 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 17 651 udpsend;
+#X msg 67 571 send /wek/inputs \$1 \$2 \$3 \$4 \$5 \$6;
+#X obj 67 511 pack f f f f f f;
+#X obj 17 691 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X text 33 689 connection to Wekinator;
+#X msg 17 52 connect localhost 3000;
+#X text 184 66 localhost can be replaced with the IP of the computer
+where Wekinator is running. The number is the port where Wekinator
+is "listening" OSC.;
+#X text 33 704 cross indicates connected;
+#X text 184 50 <--- click this to connect to Wekinator;
+#X obj 67 611 packOSC;
+#X text 124 610 convert messages into OSC format;
+#X text 74 650 send messages through a UDP network;
+#X text 401 587 /wek/inputs is the path that Wekinator expects by default
+;
+#X text 401 602 The path can be changed \, but ahs t be the same here
+and in Wekinator.;
+#X text 401 631 A number preceded by $ is a variable.;
+#X text 401 646 Each of this variables is an input in Wekinator.;
+#X text 189 510 pack independent messages into a list.;
+#X text 189 526 f stands for "float" (a number with decimals);
+#X obj 67 211 cursor;
+#X obj 67 271 route x y;
+#X floatatom 67 351 5 0 0 0 x #0-x -;
+#X floatatom 110 351 5 0 0 1 y #0-y -;
+#X obj 67 241 route motion;
+#X text 120 211 get data from trackpad or mouse;
+#X text 170 241 filter motion;
+#X text 140 271 filter axes;
+#X obj 67 181 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 91 178 cursor on/off;
+#X obj 177 431 * 10;
+#X obj 227 431 * 10;
+#X obj 287 431 * 100;
+#X obj 337 431 * 100;
+#X obj 67 311 s \$0-x;
+#X obj 117 311 s \$0-y;
+#X obj 67 401 r \$0-x;
+#X obj 117 401 r \$0-y;
+#X obj 177 401 r \$0-x;
+#X obj 227 401 r \$0-y;
+#X obj 287 401 r \$0-x;
+#X obj 337 401 r \$0-y;
+#X text 167 311 send cursor motion data;
+#X text 387 401 receive cursor motion data;
+#X text 381 431 modify cursor motion data;
+#X text 167 351 display cursor motion data;
+#X text 53 142 MAKE TESTING DATA;
+#X obj 607 151 udpreceive 12000;
+#X obj 607 221 unpackOSC;
+#X obj 607 261 print;
+#X text 728 150 receive messages through UDP network;
+#X text 678 220 convert messages to OSC format;
+#X text 729 182 is sending to.;
+#X text 728 166 The number is the port that Wekinator;
+#X text 655 261 print messages from Wekinator to console;
+#X text 317 571 <---------- send a message to Wekinator;
+#X text 18 9 Wekinator_testbed_v0.1;
+#X obj 877 21 import mrpeach;
+#X text 467 21 import the library that has the udp and OSC objects
+--->;
+#X obj 703 345 metro 10;
+#X obj 703 315 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 703 425 cup;
+#X msg 653 385 0;
+#X obj 763 455 moses 10000;
+#X obj 123 445 bang;
+#X connect 3 0 6 0;
+#X connect 4 0 12 0;
+#X connect 5 0 4 0;
+#X connect 8 0 3 0;
+#X connect 12 0 3 0;
+#X connect 21 0 25 0;
+#X connect 22 0 35 0;
+#X connect 22 1 36 0;
+#X connect 25 0 22 0;
+#X connect 29 0 21 0;
+#X connect 31 0 5 2;
+#X connect 32 0 5 3;
+#X connect 33 0 5 4;
+#X connect 34 0 5 5;
+#X connect 37 0 5 0;
+#X connect 38 0 5 1;
+#X connect 38 0 65 0;
+#X connect 39 0 31 0;
+#X connect 40 0 32 0;
+#X connect 41 0 33 0;
+#X connect 42 0 34 0;
+#X connect 48 0 49 0;
+#X connect 49 0 50 0;
+#X connect 60 0 62 0;
+#X connect 61 0 60 0;
+#X connect 62 0 64 0;
+#X connect 63 0 62 0;
+#X connect 64 1 63 0;
+#X connect 65 0 5 0;

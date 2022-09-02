@@ -1,0 +1,94 @@
+#N canvas 139 -822 1050 720 12;
+#X obj 475 680 textfile;
+#X text -120 68 1) Set the path and filename for responses:;
+#X msg 475 230 write \$1;
+#X obj 95 100 bng 15 250 50 0 empty empty empty 17 7 0 10 -4034 -1
+-1;
+#X obj 55 230 bng 15 250 50 0 empty empty empty 17 7 0 10 -66577 -257985
+-1;
+#X obj 25 330 bng 15 250 50 0 empty empty empty 17 7 0 10 -258113 -262144
+-1;
+#X text -120 228 3) Tap on the spacebar;
+#X msg 305 360 1;
+#X msg 265 360 0;
+#X msg 287 630 add \$1;
+#X obj 305 460 cup;
+#X text 184 461 count the bangs:;
+#X obj 305 490 / 100;
+#X text 162 491 convert to seconds:;
+#X text -136 561 store and output when a bang is received in the left
+inlet:;
+#X obj 287 560 f;
+#X obj 195 170 key;
+#X obj 195 200 select 32;
+#X obj 195 230 s \$0-tap;
+#X obj 205 530 r \$0-tap;
+#X obj 323 560 s \$0-elapsed_clock;
+#X obj 303 600 s \$0-elapsed_tap;
+#X obj -87 130 r \$0-elapsed_clock;
+#X floatatom -87 163 5 0 0 0 - - -;
+#X floatatom -87 283 5 0 0 0 - - -;
+#X obj -87 251 r \$0-elapsed_tap;
+#X text -120 98 2) Reset and start the clock:;
+#X obj 95 130 s \$0-reset_start;
+#X obj 305 200 r \$0-reset_start;
+#X msg 395 420 0;
+#X text 45 401 bangs every 10 miliseconds (100 Hz):;
+#X obj 305 400 metro 10;
+#X obj 305 230 t b b b;
+#X msg 485 631 clear;
+#X text 425 421 <---------- the cup object is reset to zero before
+starting;
+#X obj 25 360 s \$0-stop;
+#X obj 225 320 r \$0-stop;
+#X obj 351 260 s \$0-resetbuffer;
+#X obj 485 600 r \$0-resetbuffer;
+#X obj 475 150 r \$0-stop;
+#X text 2 631 add the response to the texfile buffer:;
+#X text 473 103 when the clock is stopped the results buffered in the
+textfile object are written to the file;
+#X text -120 328 4) Stop the clock:;
+#X text 12 691 Juan Ignacio Mendoza Garay - 2018;
+#X text -120 8 This patch will record the elapsed time when pressing
+the spacebar. Follow steps 1 through 4;
+#X text 120 98 <--- CLICK HERE;
+#X text 50 328 <--- CLICK HERE;
+#X obj 194 70 bng 15 250 50 0 empty empty empty 17 7 0 10 -4032 -1
+-1;
+#X obj 564 150 savepanel;
+#X obj 475 200 symbol;
+#X text 220 68 <--- CLICK HERE;
+#X text 530 631 : the buffer in the textfile object is emptied before
+starting;
+#X text -43 163 current elapsed time (seconds);
+#X text -43 283 last recorded elapsed time (seconds);
+#X connect 2 0 0 0;
+#X connect 3 0 27 0;
+#X connect 5 0 35 0;
+#X connect 7 0 31 0;
+#X connect 8 0 31 0;
+#X connect 9 0 0 0;
+#X connect 10 0 12 0;
+#X connect 12 0 15 1;
+#X connect 12 0 20 0;
+#X connect 15 0 9 0;
+#X connect 15 0 21 0;
+#X connect 16 0 17 0;
+#X connect 17 0 4 0;
+#X connect 17 0 18 0;
+#X connect 19 0 15 0;
+#X connect 22 0 23 0;
+#X connect 25 0 24 0;
+#X connect 28 0 32 0;
+#X connect 29 0 10 0;
+#X connect 31 0 10 0;
+#X connect 32 0 7 0;
+#X connect 32 1 29 0;
+#X connect 32 2 37 0;
+#X connect 33 0 0 0;
+#X connect 36 0 8 0;
+#X connect 38 0 33 0;
+#X connect 39 0 49 0;
+#X connect 47 0 48 0;
+#X connect 48 0 49 1;
+#X connect 49 0 2 0;

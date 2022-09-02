@@ -1,0 +1,15 @@
+#N canvas 419 23 373 348 16;
+#X obj 119 136 list-absolute;
+#X obj 119 176 zexy/sum;
+#X obj 119 206 / 2;
+#X text 4 288 Juan Ignacio Mendoza G. - 2022;
+#X obj 119 247 outlet;
+#X obj 119 26 inlet;
+#X obj 119 66 list-sign;
+#X obj 119 106 list-diff;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 0 0;
