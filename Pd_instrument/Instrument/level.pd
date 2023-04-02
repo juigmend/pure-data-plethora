@@ -1,0 +1,38 @@
+#N canvas 526 444 343 314 12;
+#X obj -49 -33 line;
+#X obj 0 25 bng 15 250 50 0 \$0-mute mute_M m 5 7 0 10 -258113 -257985
+-257985;
+#X floatatom 12 4 4 0 1 0 - #0-atom_rcv #0-atom_snd;
+#X msg -129 -33 set \$1;
+#X obj 32 25 bng 15 250 50 0 \$0-save empty s 5 7 0 10 -257985 -260097
+-1;
+#X obj 16 25 bng 15 250 50 0 \$0-recall empty R 5 8 0 10 -204786 -4160
+-1;
+#X obj -129 -65 f;
+#X obj -49 -133 r \$0-atom_snd;
+#X obj 91 88 r \$0-recall;
+#X obj -129 -132 r \$0-save;
+#X obj 81 -102 r \$0-mute;
+#X msg 81 -73 0;
+#X obj 81 58 r recall_M;
+#X text -98 146 Juan Ignacio Mendoza Garay - 2018;
+#X msg -49 -63 \$1 200;
+#X obj 61 -132 inlet;
+#X obj 81 27 s \$0-atom_rcv;
+#X obj 171 -132 inlet;
+#X obj -49 117 outlet level;
+#X obj 81 117 outlet memory;
+#X connect 0 0 18 0;
+#X connect 3 0 19 0;
+#X connect 6 0 3 0;
+#X connect 7 0 14 0;
+#X connect 7 0 6 1;
+#X connect 8 0 19 0;
+#X connect 9 0 6 0;
+#X connect 10 0 11 0;
+#X connect 11 0 16 0;
+#X connect 12 0 19 0;
+#X connect 14 0 0 0;
+#X connect 15 0 16 0;
+#X connect 17 0 16 0;
+#X coords 0 -1 1 1 48 46 2 0 0;

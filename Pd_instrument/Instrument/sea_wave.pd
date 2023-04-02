@@ -1,0 +1,108 @@
+#N canvas 550 22 585 585 12;
+#X text 2 535 Juan Ignacio Mendoza - 2016;
+#X obj 255 5 inlet level;
+#X obj 472 535 outlet~;
+#N canvas 570 309 251 450 onoff_switch 1;
+#X obj -48 74 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 2 14 bang;
+#X obj -28 104 select 0 1;
+#X msg -8 274 color 20 20 20;
+#X msg 5 214 color 20 22 22;
+#X obj -48 -16 inlet;
+#X msg -28 334 label OFF \, color 22 3;
+#X obj -48 394 outlet toggle;
+#X obj 5 244 s \$0-onoff_sw_rcv;
+#X obj 20 184 s \$0-onoff_display_rcv;
+#X obj -8 304 s \$0-onoff_sw_rcv;
+#X obj -28 364 s \$0-onoff_display_rcv;
+#X obj 2 -16 r \$0-onoff_sw_snd;
+#X msg 20 154 label ON \, color 22 6;
+#X obj 42 14 loadbang;
+#X msg 42 44 0;
+#X connect 0 0 2 0;
+#X connect 0 0 7 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 2 0 6 0;
+#X connect 2 1 4 0;
+#X connect 2 1 13 0;
+#X connect 3 0 10 0;
+#X connect 4 0 8 0;
+#X connect 5 0 0 0;
+#X connect 6 0 11 0;
+#X connect 12 0 1 0;
+#X connect 13 0 9 0;
+#X connect 14 0 15 0;
+#X connect 15 0 0 0;
+#X restore 395 35 pd onoff_switch;
+#X obj 1 5 cnv 5 111 62 empty empty empty 50 12 0 10 -4160 -143491
+0;
+#X obj 3 7 cnv 10 107 58 empty empty empty 50 12 0 10 -13330 -143491
+0;
+#X obj 63 11 cnv 5 44 28 empty empty empty 2 8 0 10 -204800 -261234
+0;
+#X obj 64 13 cnv 5 42 20 empty empty empty 2 8 0 10 -191407 -261234
+0;
+#X obj 66 15 vradio 16 1 1 1 \$0-onoff_sw_snd \$0-onoff_sw_rcv empty
+0 -8 0 10 -195568 -195568 -195568 0;
+#X obj 83 15 cnv 5 21 16 empty \$0-onoff_display_rcv OFF 1 9 0 10 -1
+-261689 0;
+#X obj 22 24 cnv 5 36 10 empty empty wave 1 4 0 12 -13381 -204800 0
+;
+#X obj 395 5 inlet onoff;
+#X obj 8 40 cnv 15 99 20 empty empty empty 20 12 0 14 -204800 -66577
+0;
+#X obj 13 42 hsl 90 15 0 1 0 0 \$0-L_slider_snd \$0-L_slider_rcv level
+29 8 0 10 -204800 -4160 -4160 0 1;
+#X obj 9 13 cnv 5 24 10 empty empty sea 1 4 0 12 -13381 -204800 0;
+#X obj 342 465 *~;
+#X obj 255 35 s \$0-L_slider_rcv;
+#X obj 125 5 inlet energy;
+#X obj 125 35 s \$0-waves_e;
+#X obj 360 425 r \$0-L_slider_snd;
+#X obj 342 225 cnoise1~;
+#X obj 342 255 lop~ 600;
+#X obj 85 165 create_noise;
+#X obj 85 335 *~;
+#X obj 173 225 r \$0-waves_e;
+#X obj 173 335 expr ($f1 * 600) + 300;
+#X obj 85 365 lop~;
+#X obj 103 305 line~;
+#X msg 103 275 \$1 100;
+#X obj 342 285 *~ 0.1;
+#X obj 472 495 *~;
+#X obj 342 75 select 1;
+#X msg 342 105 1;
+#X obj 490 105 vline~;
+#X obj 395 115 pipe 200;
+#X msg 490 75 \$1 200;
+#X connect 1 0 16 0;
+#X connect 3 0 31 0;
+#X connect 3 0 35 0;
+#X connect 11 0 3 0;
+#X connect 15 0 30 0;
+#X connect 17 0 18 0;
+#X connect 19 0 15 1;
+#X connect 20 0 21 0;
+#X connect 21 0 29 0;
+#X connect 22 0 20 0;
+#X connect 22 0 23 0;
+#X connect 23 0 26 0;
+#X connect 24 0 25 0;
+#X connect 24 0 28 0;
+#X connect 25 0 26 1;
+#X connect 26 0 15 0;
+#X connect 27 0 23 1;
+#X connect 28 0 27 0;
+#X connect 29 0 15 0;
+#X connect 30 0 2 0;
+#X connect 31 0 32 0;
+#X connect 31 1 34 0;
+#X connect 32 0 20 1;
+#X connect 32 0 22 0;
+#X connect 33 0 30 1;
+#X connect 34 0 20 1;
+#X connect 34 0 22 0;
+#X connect 35 0 33 0;
+#X coords 0 -1 1 1 111 70 2 1 1;

@@ -1,0 +1,42 @@
+#N canvas 0 22 534 710 12;
+#X text -137 65 Me: Huh?;
+#X text -137 115 when your mouse goes towards the top of the screen
+but;
+#X text -137 135 currently it does exaclty the opposite \, you just
+need to;
+#X text -137 155 sort of invert the values.;
+#X obj -135 405 inlet original signal;
+#X obj -20 575 outlet inverted signal;
+#X text -137 275 Me: (sigh);
+#X text -137 185 Me: Hmmm... I see. So should I apply some mathematical
+;
+#X text -137 205 trick?;
+#X text -137 325 bunch of numbers that you want to 'invert'. We call
+;
+#X text -137 345 this 'the original signal'. Also you need to specify
+the;
+#X floatatom -125 455 5 0 0 0 - - -;
+#X floatatom 214 455 5 0 0 0 - - -;
+#X floatatom 0 525 5 0 0 0 - - -;
+#X obj 204 405 inlet upper threshold;
+#X obj 34 405 inlet lower threshold;
+#X floatatom 44 455 5 0 0 0 - - -;
+#X obj -20 495 expr $f3-$f1+$f2;
+#X text -137 363 maximum and minimum values that these numbers will
+reach.;
+#X text -137 35 Friendly Nerd: Invert the direction of your vector.
+;
+#X text -137 95 Friendly Nerd: For example if you want a raise in pitch
+;
+#X text -137 235 Friendly Nerd: Yup.;
+#X text -137 305 Friendly Nerd: It is not complicated. You just need
+the;
+#X text -127 645 Friendly Nerd: You owe me an ice cream.;
+#X text 110 493 <-- mathematical trick :-);
+#X text -127 615 Me: Whaw! the trick is really simple! Thanks \, Friendly
+Nerd!;
+#X text -127 675 Juan Ignacio Mendoza - 2017;
+#X connect 4 0 17 0;
+#X connect 14 0 17 2;
+#X connect 15 0 17 1;
+#X connect 17 0 5 0;

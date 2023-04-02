@@ -1,0 +1,52 @@
+#N canvas 591 233 381 440 12;
+#X obj 98 -28 inlet~;
+#X obj 168 22 loadbang;
+#X obj 98 170 z~ 64;
+#X obj 98 210 *~;
+#X obj 98 371 outlet~;
+#X obj 158 170 limiter~ 10;
+#X obj 158 -28 inlet ceiling;
+#X text 165 -8 (percentage);
+#X msg 158 142 limit \$1;
+#X msg 168 52 100;
+#X obj 1 7 cnv 15 86 50 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 158 82 s \$0-disp_rcv;
+#X obj 158 112 r \$0-disp_snd;
+#X obj 158 240 env~;
+#X obj 158 372 s \$0-clip_rcv;
+#X obj 158 270 moses 95;
+#X obj 268 82 s \$0-cnv_rcv;
+#X msg 268 52 color 28 4;
+#X msg 211 298 label . \, color 28 13;
+#X msg 158 328 label . \, color 28 28;
+#X obj 3 9 cnv 15 82 46 empty \$0-cnv_rcv empty 20 12 0 14 -355 -261681
+0;
+#X floatatom 49 28 4 0 0 0 - #0-disp_rcv #0-disp_snd;
+#X obj 74 28 cnv 5 5 19 empty empty empty 20 12 0 14 -42 -66577 0;
+#X obj 5 10 cnv 15 34 16 empty \$0-cnv_rcv AUDIO 2 8 1 10 -355 -261681
+0;
+#X obj 41 10 cnv 15 42 16 empty \$0-cnv_rcv LIMITER 2 8 1 10 -355 -261681
+0;
+#X obj 13 28 cnv 15 20 20 empty \$0-clip_rcv . -14 -14 0 80 -355 -355
+0;
+#X text 1 63 limit | ceil.;
+#X connect 0 0 2 0;
+#X connect 0 0 5 0;
+#X connect 1 0 9 0;
+#X connect 1 0 17 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 0 13 0;
+#X connect 5 0 3 1;
+#X connect 6 0 11 0;
+#X connect 8 0 5 0;
+#X connect 9 0 11 0;
+#X connect 12 0 8 0;
+#X connect 13 0 15 0;
+#X connect 15 0 19 0;
+#X connect 15 1 18 0;
+#X connect 17 0 16 0;
+#X connect 18 0 14 0;
+#X connect 19 0 14 0;
+#X coords 0 -1 1 1 86 62 2 1 1;

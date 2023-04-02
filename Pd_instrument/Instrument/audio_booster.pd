@@ -1,0 +1,29 @@
+#N canvas 685 -649 283 271 12;
+#X obj 118 -30 inlet~;
+#X obj 188 20 loadbang;
+#X obj 118 178 *~;
+#X obj 118 209 outlet~;
+#X obj 1 5 cnv 15 112 28 empty empty empty 20 12 0 14 -179017 -66577
+0;
+#X obj 178 80 s \$0-disp_rcv;
+#X obj 178 110 r \$0-disp_snd;
+#X obj 3 7 cnv 15 108 24 empty \$0-cnv_rcv empty 20 12 0 14 -1 -261681
+0;
+#X floatatom 87 9 3 1 10 0 - #0-disp_rcv #0-disp_snd;
+#X obj 6 11 cnv 15 34 16 empty \$0-cnv_rcv AUDIO 2 8 0 9 -33289 -261681
+0;
+#X obj 40 11 cnv 15 42 16 empty \$0-cnv_rcv BOOSTER 2 8 0 9 -1 -261681
+0;
+#X obj 178 -30 inlet boost;
+#X text 185 -10 (factor);
+#X msg 188 50 1;
+#X obj 178 139 vline~ 1000;
+#X obj 105 9 cnv 5 5 19 empty empty empty 20 12 0 14 -1 -66577 0;
+#X connect 0 0 2 0;
+#X connect 1 0 13 0;
+#X connect 2 0 3 0;
+#X connect 6 0 14 0;
+#X connect 11 0 5 0;
+#X connect 13 0 5 0;
+#X connect 14 0 2 1;
+#X coords 0 -1 1 1 112 36 2 1 1;

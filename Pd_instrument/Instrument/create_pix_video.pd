@@ -1,0 +1,23 @@
+#N canvas 0 22 625 339 12;
+#X obj -77 61 select 0 1;
+#X msg -77 147 clear;
+#X obj -44 100 pack \$0;
+#X obj -24 286 outlet gemlist;
+#X obj -24 257 r \$0-glist;
+#N canvas 450 256 170 101 \$0-pix_video 1;
+#X restore -24 227 pd \$0-pix_video;
+#X obj -24 197 s pd-\$0-pix_video;
+#X msg -24 131 clear \, obj 1 31 pix_video \, obj 1 60 s \$1-glist
+\, obj 1 1 r \$1-pix_video_1 \, connect 0 0 1 0 \, connect 2 0 0 0
+;
+#X obj -210 61 s \$0-pix_video_1;
+#X obj -77 21 inlet tgl;
+#X obj -210 21 inlet gemlist;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 1 0 6 0;
+#X connect 2 0 7 0;
+#X connect 4 0 3 0;
+#X connect 7 0 6 0;
+#X connect 9 0 0 0;
+#X connect 10 0 8 0;

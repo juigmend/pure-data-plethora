@@ -1,0 +1,140 @@
+#N canvas 293 22 772 228 12;
+#X obj 332 163 *~;
+#X obj 351 93 sig~;
+#X obj 332 133 vcf~ 1;
+#X obj 202 3 inlet~;
+#X obj 332 193 outlet~;
+#X obj 351 3 inlet f;
+#X obj 444 3 inlet q;
+#X obj 511 3 inlet v;
+#N canvas 0 23 468 220 f_distro 0;
+#X msg 11 97 set \$1;
+#X msg 331 157 set \$1;
+#X obj 171 8 inlet f;
+#X obj 331 7 r \$0-f_slider_snd;
+#X obj 331 187 s \$0-f_atom_rcv;
+#X obj 11 127 s \$0-f_slider_rcv;
+#X obj 11 8 r \$0-f_atom_snd;
+#X obj 171 127 outlet f;
+#X obj 331 127 i;
+#X connect 0 0 5 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 2 0 7 0;
+#X connect 2 0 8 0;
+#X connect 3 0 7 0;
+#X connect 3 0 8 0;
+#X connect 6 0 0 0;
+#X connect 6 0 7 0;
+#X connect 8 0 1 0;
+#X restore 351 43 pd f_distro;
+#N canvas 473 23 501 220 q_distro 0;
+#X msg 331 157 set \$1;
+#X obj 171 8 inlet q;
+#X obj 11 127 s \$0-q_slider_rcv;
+#X obj 331 7 r \$0-q_slider_snd;
+#X obj 331 187 s \$0-q_atom_rcv;
+#X obj 11 8 r \$0-q_atom_snd;
+#X msg 11 97 set \$1;
+#X obj 171 127 outlet q;
+#X obj 331 127 f;
+#X connect 0 0 4 0;
+#X connect 1 0 6 0;
+#X connect 1 0 7 0;
+#X connect 1 0 8 0;
+#X connect 3 0 7 0;
+#X connect 3 0 8 0;
+#X connect 5 0 6 0;
+#X connect 5 0 7 0;
+#X connect 6 0 2 0;
+#X connect 8 0 0 0;
+#X restore 444 73 pd q_distro;
+#X obj 1 5 cnv 15 188 89 empty empty empty 2 12 2 18 -162280 -66577
+0;
+#X obj 3 7 cnv 15 184 85 empty empty empty 2 12 2 18 -232960 -66577
+0;
+#X obj 7 37 cnv 15 153 23 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 17 39 hsl 100 19 1 2000 0 0 \$0-f_slider_snd \$0-f_slider_rcv
+f 49 9 2 14 -99865 -204786 -204786 0 1;
+#X floatatom 122 39 5 0 0 1 - #0-f_atom_rcv #0-f_atom_snd;
+#X obj 7 65 cnv 15 153 23 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X floatatom 122 67 5 0 1 0 - #0-q_atom_rcv #0-q_atom_snd;
+#X obj 17 67 hsl 100 19 0.01 1 0 0 \$0-q_slider_snd \$0-q_slider_rcv
+q 49 7 2 14 -99865 -232576 -203904 0 1;
+#X obj 164 37 cnv 15 19 51 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 166 41 vsl 15 42 0 1 0 0 \$0-v_slider_snd \$0-v_slider_rcv v
+4 20 2 16 -99865 -257985 -262130 0 1;
+#X obj 6 10 cnv 15 74 20 empty empty Resonant 2 12 2 18 -232960 -66577
+0;
+#X obj 78 10 cnv 15 44 20 empty empty Filter 2 12 2 18 -232960 -66577
+0;
+#N canvas 102 23 225 426 bypass_switch 0;
+#X obj -8 44 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 42 14 bang;
+#X obj 22 74 select 0 1;
+#X obj 35 204 s \$0-bp_sw_rcv;
+#X msg 2 304 color 20 20 20;
+#X obj 2 334 s \$0-bp_sw_rcv;
+#X msg 35 174 color 20 22 22;
+#X obj 22 274 s \$0-bp_display_rcv;
+#X obj 55 144 s \$0-bp_display_rcv;
+#X obj 42 -16 r \$0-bp_sw_snd;
+#X msg 22 244 label BYPASS \, color 22 3;
+#X msg 55 114 label ON \, color 22 6;
+#X obj -8 -16 inlet;
+#X obj -8 374 s \$0-bypass;
+#X connect 0 0 2 0;
+#X connect 0 0 13 0;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 2 0 10 0;
+#X connect 2 1 6 0;
+#X connect 2 1 11 0;
+#X connect 4 0 5 0;
+#X connect 6 0 3 0;
+#X connect 9 0 1 0;
+#X connect 10 0 7 0;
+#X connect 11 0 8 0;
+#X connect 12 0 0 0;
+#X restore 644 153 pd bypass_switch;
+#X obj 124 11 cnv 5 59 20 empty empty empty 2 8 0 10 -191407 -261234
+0;
+#X obj 126 13 vradio 16 1 1 1 \$0-bp_sw_snd \$0-bp_sw_rcv empty 0 -8
+0 10 -195568 -195568 -195568 0;
+#X obj 143 13 cnv 5 38 16 empty \$0-bp_display_rcv BYPASS 1 9 0 10
+-1 -261689 0;
+#X text 567 193 Juan Ignacio Mendoza - 2016;
+#X obj 511 43 s \$0-v_slider_rcv;
+#X obj 154 39 cnv 5 5 20 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 644 3 inlet bypass/on;
+#X obj 262 3 r \$0-bypass;
+#X obj 574 73 loadbang;
+#X msg 574 103 0;
+#X obj 402 133 r \$0-v_slider_snd;
+#X obj 154 67 cnv 5 5 20 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 444 103 * 100;
+#X obj 202 93 audio_bypasson;
+#X connect 0 0 4 0;
+#X connect 1 0 2 1;
+#X connect 2 0 0 0;
+#X connect 3 0 36 0;
+#X connect 5 0 8 0;
+#X connect 6 0 9 0;
+#X connect 7 0 27 0;
+#X connect 8 0 1 0;
+#X connect 9 0 35 0;
+#X connect 29 0 22 0;
+#X connect 30 0 36 1;
+#X connect 31 0 32 0;
+#X connect 32 0 22 0;
+#X connect 33 0 0 1;
+#X connect 35 0 2 2;
+#X connect 36 0 4 0;
+#X connect 36 1 2 0;
+#X coords 0 -1 1 1 188 97 2 1 1;

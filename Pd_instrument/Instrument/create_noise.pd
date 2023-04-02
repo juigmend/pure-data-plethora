@@ -1,0 +1,19 @@
+#N canvas 140 23 513 338 12;
+#X obj -64 290 outlet~;
+#X obj -117 15 inlet;
+#X obj -117 65 select 0 1;
+#X msg -117 151 clear;
+#X obj -84 104 pack \$0;
+#X obj -64 201 s pd-\$0-noise;
+#N canvas 658 130 170 101 \$0-noise 0;
+#X restore -64 231 pd \$0-noise;
+#X msg -64 135 clear \, obj 1 1 noise~ \, obj 1 30 throw~ \$1-output_noise
+\, connect 0 0 1 0;
+#X obj -64 261 catch~ \$0-output_noise;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 3 0 5 0;
+#X connect 4 0 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 0 0;

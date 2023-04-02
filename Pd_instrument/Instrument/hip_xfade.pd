@@ -1,0 +1,64 @@
+#N canvas 988 87 349 389 12;
+#X obj 10 14 cnv 15 148 100 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 14 16 cnv 15 140 96 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj -70 134 hip~;
+#X obj -70 -46 inlet~;
+#X obj -70 234 *~;
+#X obj 21 89 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -228856
+-258113 -1 11700 1;
+#X obj 70 294 outlet~;
+#X obj -52 204 line~;
+#X msg -52 174 \$1 50;
+#X obj 18 24 knob 32 32 200 20000 0 1 empty empty empty 0 -8 0 8 -191407
+-260097 -1 1300 0;
+#X floatatom 18 65 6 0 20000 0 - - -;
+#X obj 75 -46 loadbang;
+#X obj 180 134 hip~;
+#X obj 180 -46 inlet~;
+#X obj 180 234 *~;
+#X obj 198 204 line~;
+#X msg 198 174 \$1 50;
+#X obj 118 24 knob 32 32 200 20000 0 1 empty empty empty 0 -8 0 8 -191407
+-4034 -1 1200 0;
+#X floatatom 107 65 6 0 20000 0 - - -;
+#X text 69 34 hip;
+#X text 75 47 _;
+#X text 69 86 x;
+#X text 89 86 fade;
+#X obj -45 104 line;
+#X msg -45 74 \$1 200;
+#X obj 205 104 line;
+#X msg 205 74 \$1 200;
+#X text 161 316 Juan - 2018;
+#X obj 18 142 expr 1 - $f1;
+#X msg 75 -12 1600;
+#X msg -45 -12 0.5;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 6 0;
+#X connect 5 0 16 0;
+#X connect 5 0 28 0;
+#X connect 7 0 4 1;
+#X connect 8 0 7 0;
+#X connect 9 0 10 0;
+#X connect 9 0 24 0;
+#X connect 11 0 29 0;
+#X connect 11 0 30 0;
+#X connect 12 0 14 0;
+#X connect 13 0 12 0;
+#X connect 14 0 6 0;
+#X connect 15 0 14 1;
+#X connect 16 0 15 0;
+#X connect 17 0 18 0;
+#X connect 17 0 26 0;
+#X connect 23 0 2 1;
+#X connect 24 0 23 0;
+#X connect 25 0 12 1;
+#X connect 26 0 25 0;
+#X connect 28 0 8 0;
+#X connect 29 0 9 0;
+#X connect 29 0 17 0;
+#X connect 30 0 5 0;
+#X coords 0 -1 1 1 148 108 2 10 10;
