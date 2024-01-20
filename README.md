@@ -2,11 +2,7 @@
 
 Assorted and unorganized Pure Data patches.
 
-Video: 
-
-
-<iframe src="https://drive.google.com/file/d/1mBrcc733Q_x8bpxo-NzMO8KinMEmiWXv/preview" width="640" height="480" allow="autoplay"></iframe>
-
+#### Video of some works using software in this repository:
 
 - [![Rings and Sphere](https://drive.google.com/file/d/1mBrcc733Q_x8bpxo-NzMO8KinMEmiWXv/preview)](https://drive.google.com/file/d/1mBrcc733Q_x8bpxo-NzMO8KinMEmiWXv/view?usp=sharing "Rings and Sphere")
 
